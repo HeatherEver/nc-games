@@ -15,13 +15,29 @@ export const getCategories = () => {
     });
 };
 
-export const getReviews = () => {
+export const getReviews = (category) => {
+  let path = '/reviews';
+  if (category) {
+    path += `?category=${category}`;
+  }
   return gamesAPI
-    .get('/reviews')
+    .get(path)
     .then((res) => {
       return res.data.reviews;
     })
     .catch((err) => {
       console.log(err);
     });
+};
+
+export const getReview = (review_id) => {
+  return gamesAPI.get(`/reviews/${review_id}`).then((res) => {
+    return res.data.review;
+  });
+};
+
+export const getComments = (review_id) => {
+  return gamesAPI.get(`/reviews/${review_id}/comments`).then((res) => {
+    return res.data.comment;
+  });
 };

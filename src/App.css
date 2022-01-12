@@ -23,8 +23,9 @@
 }
 
 .home {
-  border: solid 1px rgb(42, 87, 155);
-  background-color: rgba(34, 78, 145, 0.25);
+  border: solid 1px rgb(134, 178, 228);
+  background-color: rgba(145, 168, 202, 0.25);
+  margin-left: 25%;
 }
 
 .logout {
@@ -56,4 +57,20 @@
 .login-page {
   background-color: rgb(153, 218, 238);
   height: 100vh;
+}
+
+.review {
+  margin-left: 25%;
+}
+
+.comments-list {
+  text-align: center;
+  padding-top: 10px;
+  list-style: none;
+}
+
+#comment-header {
+  border-top: solid rgba(0, 0, 0, 0.274) 4px;
+  padding-top: 5px;
+  padding-bottom: 10px;
 }

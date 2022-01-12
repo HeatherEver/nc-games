@@ -1,7 +1,6 @@
 import { React, useState, useEffect } from 'react';
 import { getCategories } from '../utils/utils';
 import { Link } from 'react-router-dom';
-import { UserProvider } from '../contexts/userContext';
 
 function Nav() {
   const [categories, setCategories] = useState([]);
@@ -12,8 +11,6 @@ function Nav() {
     });
   }, []);
 
-  const { logout } = UserProvider;
-
   return (
     <nav className="nav">
       <Link to="/">
@@ -21,14 +18,16 @@ function Nav() {
       </Link>
       {categories.map((category) => {
         return (
-          <p key={category.slug} className="category_list">
+          <Link
+            to={`/reviews/category/${category.slug}`}
+            key={category.slug}
+            className="category_list"
+          >
             {category.slug}
-          </p>
+          </Link>
         );
       })}
-      <button className="logout" onClick={logout}>
-        Log out
-      </button>
+      <button className="logout">Log out</button>
     </nav>
   );
 }
