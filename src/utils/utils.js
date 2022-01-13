@@ -37,7 +37,20 @@ export const getReview = (review_id) => {
 };
 
 export const getComments = (review_id) => {
-  return gamesAPI.get(`/reviews/${review_id}/comments`).then((res) => {
-    return res.data.comment;
-  });
+  return gamesAPI
+    .get(`/reviews/${review_id}/comments`)
+    .then((res) => {
+      return res.data.comment;
+    })
+    .catch((err) => {
+      console.dir(err);
+    });
+};
+
+export const patchVotes = (review_id) => {
+  return gamesAPI
+    .patch(`/reviews/${review_id}`, { inc_votes: 1 })
+    .then((res) => {
+      return res.data.review;
+    });
 };

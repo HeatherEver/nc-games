@@ -7,17 +7,30 @@ function Review() {
   const { review_id } = useParams();
   const [review, setReview] = useState({});
   const [comments, setComments] = useState([]);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    getReview(review_id).then((reviewFromAPI) => {
-      setReview(reviewFromAPI[0]);
-    });
+    setError(null);
+    getReview(review_id)
+      .then((reviewFromAPI) => {
+        setReview(reviewFromAPI[0]);
+      })
+      .catch((err) => {
+        console.log(err);
+        setError(err);
+      });
   }, []);
 
   useEffect(() => {
-    getComments(review_id).then((commentsFromAPI) => {
-      setComments(commentsFromAPI);
-    });
+    setError(null);
+    getComments(review_id)
+      .then((commentsFromAPI) => {
+        setComments(commentsFromAPI);
+      })
+      .catch((err) => {
+        console.log(err);
+        setError(err);
+      });
   }, []);
 
   return (
@@ -28,7 +41,7 @@ function Review() {
           src={review.review_img_url}
           width="300"
           height="300"
-          alt="board game icon"
+          alt="user's profile"
         />
         <p>{review.title}</p>
         <p>{review.review_body}</p>
@@ -37,23 +50,26 @@ function Review() {
         <p>{review.owner}</p>
         <p>{moment(review.created_at).format('MMMM Do YYYY, h:mm:ss a')}</p>
         <p>{review.comment_count}</p>
-        <p>{review.votes}</p>
+        <p> {review.votes}</p>
       </div>
       <div className="comments-list">
         <h2 id="comment-header">Comments</h2>
         <ul className="comments-list">
-          {comments.map((comment) => {
-            return (
-              <li key={comment.created_at}>
-                <p>{comment.author}</p>
-                <p>{comment.body}</p>
-                <p>
-                  {moment(comment.created_at).format('MMMM Do YYYY, h:mm:ss a')}
-                </p>
-                <p>{comment.votes}</p>
-              </li>
-            );
-          })}
+          {comments &&
+            comments.map((comment) => {
+              return (
+                <li key={comment.created_at}>
+                  <p>{comment.author}</p>
+                  <p>{comment.body}</p>
+                  <p>
+                    {moment(comment.created_at).format(
+                      'MMMM Do YYYY, h:mm:ss a'
+                    )}
+                  </p>
+                  <p>{comment.votes}</p>
+                </li>
+              );
+            })}
         </ul>
       </div>
     </div>

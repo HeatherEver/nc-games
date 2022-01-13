@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { getReviews } from '../utils/utils';
+import Votes from './Votes';
 
 function Home() {
   const [reviews, setReviews] = useState([]);
@@ -18,20 +19,20 @@ function Home() {
       <ul>
         {reviews.map((review) => {
           return (
-            <Link to={`reviews/${review.review_id}`}>
-              <li key={review.review_id} className="reviews-list">
-                <img
-                  src={review.review_img_url}
-                  width="100"
-                  height="100"
-                  alt="board game icon"
-                />
+            <li key={review.review_id} className="reviews-list">
+              <img
+                src={review.review_img_url}
+                width="100"
+                height="100"
+                alt="board game icon"
+              />
+              <Link to={`reviews/${review.review_id}`}>
                 <p>{review.title}</p>
-                <p>{review.designer}</p>
-                <p>{review.owner}</p>
-                <p>{review.votes}</p>
-              </li>
-            </Link>
+              </Link>
+              <p>{review.designer}</p>
+              <p>{review.owner}</p>
+              <Votes votes={review.votes} review_id={review.review_id} />
+            </li>
           );
         })}
       </ul>
