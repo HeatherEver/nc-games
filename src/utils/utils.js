@@ -5,14 +5,9 @@ const gamesAPI = axios.create({
 });
 
 export const getCategories = () => {
-  return gamesAPI
-    .get('/categories')
-    .then((res) => {
-      return res.data.categories;
-    })
-    .catch((err) => {
-      console.dir(err);
-    });
+  return gamesAPI.get('/categories').then((res) => {
+    return res.data.categories;
+  });
 };
 
 export const getReviews = (category) => {
@@ -20,14 +15,9 @@ export const getReviews = (category) => {
   if (category) {
     path += `?category=${category}`;
   }
-  return gamesAPI
-    .get(path)
-    .then((res) => {
-      return res.data.reviews;
-    })
-    .catch((err) => {
-      console.log(err);
-    });
+  return gamesAPI.get(path).then((res) => {
+    return res.data.reviews;
+  });
 };
 
 export const getReview = (review_id) => {
@@ -37,14 +27,9 @@ export const getReview = (review_id) => {
 };
 
 export const getComments = (review_id) => {
-  return gamesAPI
-    .get(`/reviews/${review_id}/comments`)
-    .then((res) => {
-      return res.data.comment;
-    })
-    .catch((err) => {
-      console.dir(err);
-    });
+  return gamesAPI.get(`/reviews/${review_id}/comments`).then((res) => {
+    return res.data.comment;
+  });
 };
 
 export const patchVotes = (review_id) => {
@@ -53,4 +38,29 @@ export const patchVotes = (review_id) => {
     .then((res) => {
       return res.data.review;
     });
+};
+
+export const postComment = (review_id, newComment) => {
+  return gamesAPI
+    .post(`/reviews/${review_id}/comments`, newComment)
+    .then((res) => {
+      return res.data.newComment;
+    });
+};
+
+export const getReviewsBy = (order) => {
+  let path = '/reviews';
+  if (order) {
+    path += `?sort_by=${order}`;
+  }
+  return gamesAPI.get(path).then((res) => {
+    return res.data.reviews;
+  });
+};
+
+export const deleteComment = (comment_id) => {
+  return gamesAPI.delete(`/comments/${comment_id}`).then(() => {
+    alert('Comment deleted');
+    return null;
+  });
 };

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { getReviews } from '../utils/utils';
+import SortBy from './SortBy';
 import Votes from './Votes';
 
 function Home() {
@@ -16,6 +17,7 @@ function Home() {
   return (
     <div className="home">
       <h1 className="reviews-title">Reviews</h1>
+      <SortBy />
       <ul>
         {reviews.map((review) => {
           return (

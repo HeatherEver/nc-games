@@ -13,9 +13,13 @@ function App() {
           <Nav />
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="reviews" element={<Home />} />
-            <Route path="reviews/category/:category" element={<Home />} />
-            <Route path="reviews/:review_id" element={<Review />} />
+            <Route path="/reviews" element={<Home />} />
+            <Route path="/reviews/category/:category" element={<Home />} />
+            <Route
+              path="/reviews/category/:category/reviews/:review_id"
+              element={<Review />}
+            />
+            <Route path="/reviews/:review_id" element={<Review />} />
           </Routes>
         </RequireLogin>
       </div>
