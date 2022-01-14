@@ -23,14 +23,14 @@ function Comments() {
   }, []);
 
   return (
-    <div className="comments-list">
+    <div className="comments">
       <h2 id="comment-header">Comments</h2>
-      <ul className="comments-list">
-        <PostComment setComments={setComments} />
+      <PostComment setComments={setComments} />
+      <ul>
         {comments &&
           comments.map((comment) => {
             return (
-              <li key={comment.created_at}>
+              <li className="comments-list" key={comment.created_at}>
                 <p>{comment.author}</p>
                 <p>{comment.body}</p>
                 <p>

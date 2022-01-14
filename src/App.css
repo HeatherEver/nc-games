@@ -30,6 +30,28 @@
 
 .logout {
   margin-top: 100px;
+  box-shadow: inset 0px 1px 0px 0px #efdcfb;
+  background: linear-gradient(to bottom, #dfbdfa 5%, #bc80ea 100%);
+  background-color: #dfbdfa;
+  border-radius: 7px;
+  border: 1px solid #c584f3;
+  display: inline-block;
+  cursor: pointer;
+  color: #ffffff;
+  font-family: Arial;
+  font-size: 15px;
+  font-weight: bold;
+  padding: 6px 24px;
+  text-decoration: none;
+  text-shadow: 0px 2px 0px #9752cc;
+}
+.logout:hover {
+  background: linear-gradient(to bottom, #bc80ea 5%, #dfbdfa 100%);
+  background-color: #bc80ea;
+}
+.logout:active {
+  position: relative;
+  top: 1px;
 }
 
 .login-form {
@@ -65,8 +87,9 @@
 
 .comments-list {
   text-align: center;
-  padding-top: 10px;
+  padding-top: 20px;
   list-style: none;
+  border: solid, 3px, black;
 }
 
 #comment-header {
@@ -77,4 +100,38 @@
 
 .reviews-list {
   list-style: none;
+  border: 3px black solid;
+}
+
+.post-input {
+  width: 50%;
+  height: 150px;
+  padding: 12px 20px;
+  box-sizing: border-box;
+  border: 2px solid rgb(221, 178, 231);
+  border-radius: 4px;
+  background-color: #f8f8f8;
+  resize: none;
+}
+
+.post-input:focus {
+  background-color: rgb(248, 231, 252);
+}
+
+.submit-post {
+  margin-top: 5px;
+  box-shadow: inset 0px 1px 0px 0px #efdcfb;
+  background: linear-gradient(to bottom, #dfbdfa 5%, #bc80ea 100%);
+  background-color: #dfbdfa;
+  border-radius: 7px;
+  border: 1px solid #c584f3;
+  display: inline-block;
+  cursor: pointer;
+  color: #ffffff;
+  font-family: Arial;
+  font-size: 15px;
+  font-weight: bold;
+  padding: 6px 24px;
+  text-decoration: none;
+  text-shadow: 0px 2px 0px #9752cc;
 }

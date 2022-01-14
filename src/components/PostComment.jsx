@@ -31,13 +31,16 @@ function PostComment({ setComments }) {
       <form onSubmit={handleSubmit}>
         <label htmlFor="comment"></label>
         <input
+          className="post-input"
           type="text"
           id="comment"
           value={comment}
           name="comment"
           onChange={handleCommentChange}
         ></input>
-        <input type="submit" value="Submit"></input>
+        <section>
+          <input className="submit-post" type="submit" value="Submit"></input>
+        </section>
       </form>
     </div>
   );
