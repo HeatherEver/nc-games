@@ -13,7 +13,7 @@ function PostComment({ setComments }) {
     const newComment = { username: user.username, body: comment };
     postComment(review_id, newComment)
       .then((commentFromAPI) => {
-        setComments((prevComms) => [...prevComms, commentFromAPI]);
+        setComments((prevComms) => [commentFromAPI, ...prevComms]);
         setComment('');
       })
       .catch((err) => {

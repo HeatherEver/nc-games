@@ -5,10 +5,14 @@ import { UserContext } from '../contexts/userContext';
 function DeleteOwnComment({ setComments, comment }) {
   const { user } = useContext(UserContext);
 
-  const handleClick = () => {
+  const handleClick = (id) => {
     if (user.username === comment.author) {
-      deleteComment(comment.comment_id).then(() => {
-        setComments(null);
+      deleteComment(id).then(() => {
+        setComments((prevComments) => {
+          return prevComments.filter((comm) => {
+            return comm.comment_id !== id;
+          });
+        });
       });
     } else {
       alert("You cannot delete another user's comment");
@@ -17,7 +21,12 @@ function DeleteOwnComment({ setComments, comment }) {
 
   return (
     <div>
-      <button className="delete-btn" onClick={handleClick}>
+      <button
+        className="delete-btn"
+        onClick={() => {
+          handleClick(comment.comment_id);
+        }}
+      >
         Delete
       </button>
     </div>

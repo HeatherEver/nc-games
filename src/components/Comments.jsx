@@ -26,6 +26,7 @@ function Comments() {
     <div className="comments-list">
       <h2 id="comment-header">Comments</h2>
       <ul className="comments-list">
+        <PostComment setComments={setComments} />
         {comments &&
           comments.map((comment) => {
             return (
@@ -41,7 +42,6 @@ function Comments() {
             );
           })}
       </ul>
-      <PostComment setComments={setComments} />
     </div>
   );
 }

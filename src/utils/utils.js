@@ -49,13 +49,15 @@ export const postComment = (review_id, newComment) => {
 };
 
 export const getReviewsBy = (order) => {
-  let path = '/reviews';
-  if (order) {
-    path += `?sort_by=${order}`;
-  }
-  return gamesAPI.get(path).then((res) => {
-    return res.data.reviews;
-  });
+  return gamesAPI
+    .get('/reviews', {
+      params: {
+        order: order,
+      },
+    })
+    .then((res) => {
+      return res.data.reviews;
+    });
 };
 
 export const deleteComment = (comment_id) => {
